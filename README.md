@@ -77,14 +77,18 @@ Measured on this repository's own runtime and test suite (local production build
 
 ## Install
 
-Requires **Node ≥ 20.9** and git. Replace `MONTASSAR2001` with the GitHub account that hosts this repository.
+Requires **Node ≥ 20.9** and git.
 
 ```bash
-npx skills add MONTASSAR2001/pixel-clone-skill        # the skill, for every agent `skills` supports
-cd <path-to>/pixel-clone && npm run setup  # deps + build + Playwright Chromium, one command
+# 1. The skill, for every agent `npx skills` supports (Claude Code, Cursor, Windsurf, Antigravity, ...)
+npx skills add MONTASSAR2001/pixel-clone-skill
+
+# 2. The MCP server: clone once, then one command installs deps, builds and downloads Playwright's Chromium
+git clone https://github.com/MONTASSAR2001/pixel-clone-skill.git
+cd pixel-clone-skill && npm run setup
 ```
 
-Every client starts the server with `node scripts/mcp-launch.mjs`. On a fresh install (plugin, extension, or clone without `npm run setup`), the launcher installs and builds on its first start (about 15 s) and uses the system Chrome until `npm run setup` provides the bundled Chromium. Use absolute paths in the snippets below.
+Every client starts the server with `node <clone>/scripts/mcp-launch.mjs`. In the snippets below, replace `/abs/path/to/pixel-clone-skill` with the absolute path of that clone (MCP configs do not expand `~`). On a fresh install (plugin, extension, or a clone without `npm run setup`), the launcher installs and builds on its first start (about 15 s) and uses the system Chrome until `npm run setup` provides the bundled Chromium.
 
 <details open>
 <summary><b>Claude Code</b>: plugin with the skill and the MCP server in one step</summary>
@@ -94,10 +98,10 @@ claude plugin marketplace add MONTASSAR2001/pixel-clone-skill
 claude plugin install pixel-clone@pixel-clone-skill
 ```
 
-Or manually, after `npx skills add`:
+The plugin bundles the skill and the MCP server; no clone or config needed. Or manually, after `npx skills add` and the clone above:
 
 ```bash
-claude mcp add pixel-clone -- node /abs/path/to/pixel-clone/scripts/mcp-launch.mjs
+claude mcp add pixel-clone -- node /abs/path/to/pixel-clone-skill/scripts/mcp-launch.mjs
 ```
 </details>
 
@@ -109,7 +113,7 @@ claude mcp add pixel-clone -- node /abs/path/to/pixel-clone/scripts/mcp-launch.m
   "mcpServers": {
     "pixel-clone": {
       "command": "node",
-      "args": ["/abs/path/to/pixel-clone/scripts/mcp-launch.mjs"]
+      "args": ["/abs/path/to/pixel-clone-skill/scripts/mcp-launch.mjs"]
     }
   }
 }
@@ -119,14 +123,21 @@ claude mcp add pixel-clone -- node /abs/path/to/pixel-clone/scripts/mcp-launch.m
 <details>
 <summary><b>Antigravity</b>: <code>~/.gemini/config/mcp_config.json</code> (or <code>&lt;workspace&gt;/.agents/mcp_config.json</code>)</summary>
 
-Skill: `npx skills add`, or place this repository at `~/.gemini/config/skills/pixel-clone/` (all workspaces) or `<workspace>/.agents/skills/pixel-clone/`.
+Skill: `npx skills add MONTASSAR2001/pixel-clone-skill`, or clone the repository as a skill folder named after the skill:
+
+```bash
+git clone https://github.com/MONTASSAR2001/pixel-clone-skill.git ~/.gemini/config/skills/pixel-clone   # all workspaces
+# or <workspace>/.agents/skills/pixel-clone for one workspace
+```
+
+MCP server:
 
 ```json
 {
   "mcpServers": {
     "pixel-clone": {
       "command": "node",
-      "args": ["/abs/path/to/pixel-clone/scripts/mcp-launch.mjs"]
+      "args": ["/abs/path/to/pixel-clone-skill/scripts/mcp-launch.mjs"]
     }
   }
 }
@@ -143,7 +154,7 @@ Windsurf's current documentation lives under Devin Local: `~/.config/devin/mcp_c
   "mcpServers": {
     "pixel-clone": {
       "command": "node",
-      "args": ["/abs/path/to/pixel-clone/scripts/mcp-launch.mjs"]
+      "args": ["/abs/path/to/pixel-clone-skill/scripts/mcp-launch.mjs"]
     }
   }
 }
