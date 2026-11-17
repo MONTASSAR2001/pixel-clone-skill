@@ -1,0 +1,17 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Virtual scroll fixture</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#fff;font:18px/1.5 Georgia,serif}
+#wrap{position:fixed;inset:0;overflow:hidden}
+#content{height:3000px;will-change:transform}
+.band{height:600px;display:flex;align-items:center;justify-content:center;font-size:48px}
+.band:nth-child(odd){background:#f3efe6}.band:nth-child(even){background:#1b2a3a;color:#fff}
+</style></head><body>
+<div id="wrap"><div id="content">
+<div class="band">One</div><div class="band">Two</div><div class="band">Three</div><div class="band">Four</div><div class="band">Five</div>
+</div></div>
+<script>
+const c=document.getElementById('content'); let target=0,y=0;
+addEventListener('wheel',e=>{target=Math.max(0,Math.min(2100,target+e.deltaY))},{passive:true});
+(function loop(){y+=(target-y)*0.1; c.style.transform='translate3d(0,'+(-y).toFixed(3)+'px,0)'; requestAnimationFrame(loop)})();
+</script></body></html>

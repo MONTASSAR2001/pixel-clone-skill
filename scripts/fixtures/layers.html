@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Canvas layers fixture</title>
+<style>
+  html, body { margin: 0; background: #f4f1ea; font-family: Georgia, serif; }
+  #gl { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  .deco { position: fixed; left: 600px; top: 410px; width: 240px; height: 24px; background: #0a7; z-index: -1; }
+  .hud { position: fixed; right: 30px; top: 30px; z-index: 2; padding: 10px 16px; background: #123; color: #fff; pointer-events: none; }
+  .clip { position: fixed; left: 40px; bottom: 40px; width: 320px; height: 180px; z-index: 1; }
+  .spacer { height: 3200px; }
+</style>
+</head>
+<body>
+  <div class="deco"></div>
+  <canvas id="gl"></canvas>
+  <div class="hud">HUD above</div>
+  <video class="clip" src="clip.webm" muted loop autoplay playsinline></video>
+  <div class="spacer"></div>
+  <script>
+    // A viewport-covering canvas (opaque only in its centre band) on a page several screens tall.
+    const c = document.getElementById("gl");
+    const draw = () => { c.width = innerWidth; c.height = innerHeight; const g = c.getContext("2d"); g.clearRect(0, 0, c.width, c.height); g.fillStyle = "#c33"; g.fillRect(c.width / 2 - 200, c.height / 2 - 100, 400, 200); };
+    draw(); addEventListener("resize", draw);
+  </script>
+</body>
+</html>

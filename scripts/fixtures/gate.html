@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Gate fixture</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101418;color:#eee;font:16px/1.5 Helvetica,Arial,sans-serif}
+#hdr{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;padding:0 32px;background:rgba(16,20,24,.7);backdrop-filter:blur(8px);z-index:20}
+main{padding:120px 48px}
+h1{font-size:56px;margin:0 0 16px}
+.badge{position:fixed;right:24px;bottom:24px;z-index:50;background:#fff;color:#000;padding:10px 16px;mix-blend-mode:difference;font-weight:700}
+.shape{width:240px;height:240px;background:linear-gradient(135deg,#ff5a1f,#ffb347);clip-path:polygon(50% 0,100% 100%,0 100%);margin-top:32px}
+#ui{position:fixed;inset:0;z-index:1;pointer-events:none}
+#ui button{pointer-events:auto;position:absolute;left:48px;bottom:80px;padding:12px 20px;font-size:16px;cursor:pointer}
+.preloader{position:fixed;inset:0;z-index:400;background:#000;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.preloader .label{font:14px monospace;letter-spacing:.1em}
+.enter-btn{display:none;padding:14px 28px;border:1px solid #fff;background:transparent;color:#fff;cursor:pointer;font-size:14px;letter-spacing:.2em}
+#cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:500;background:#222;color:#fff;padding:16px 24px;display:flex;gap:12px;align-items:center}
+#cookie-banner button{padding:8px 16px;cursor:pointer}
+</style></head><body>
+<div id="hdr"><strong>Gate Fixture</strong></div>
+<div id="ui"><button id="play" onclick="this.textContent='Played!'">Play demo</button></div>
+<main><h1>Main Content Revealed</h1><p>The real page behind the gate.</p><div class="shape"></div></main>
+<div class="badge">BLEND</div>
+<img src="/hang.png" alt="" width="1" height="1" style="position:absolute;left:-10px">
+<div class="preloader"><div class="label">LOADING 0%</div><button class="enter-btn">CLICK TO ENTER</button></div>
+<div id="cookie-banner"><span>We use cookies to improve your experience.</span><button>Reject all</button><button id="acc">Accept all</button></div>
+<script>
+const label=document.querySelector('.label'), btn=document.querySelector('.enter-btn'), pre=document.querySelector('.preloader');
+let p=0; const iv=setInterval(()=>{p=Math.min(100,p+10);label.textContent='LOADING '+p+'%';if(p>=100){clearInterval(iv);btn.style.display='block'}},120);
+btn.addEventListener('click',()=>{pre.style.display='none'});
+document.getElementById('acc').addEventListener('click',()=>{document.getElementById('cookie-banner').remove()});
+</script></body></html>

@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/*
+ * PIXEL-CLONE: paste extracted tokens here.
+ *  - cssVariables from extract_dom_and_styles  -> @theme / :root, keeping original names
+ *  - fonts[]                                   -> @font-face (files in /public/fonts)
+ *  - keyframes{}                               -> verbatim @keyframes blocks
+ */
+@theme {
+  /* --color-brand: rgb(0 0 0); */
+  /* --font-sans: "Original Font", sans-serif; */
+}
+
+/* @font-face {
+  font-family: "Original Font";
+  src: url("/fonts/original.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+} */
+
+/* Neutral reset: do not add visual styling here. Match the target's own reset. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}

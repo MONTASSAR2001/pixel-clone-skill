@@ -1,0 +1,59 @@
+{
+  "name": "pixel-clone-skill",
+  "version": "0.1.0",
+  "description": "Agent Skill + MCP server that reverse-engineers a website's UI, motion and Three.js/WebGL scenes into Next.js + Tailwind + GSAP/Framer Motion + React Three Fiber, verified by a pixelmatch diff loop.",
+  "keywords": [
+    "agent-skill",
+    "mcp",
+    "claude-code",
+    "cursor",
+    "windsurf",
+    "playwright",
+    "pixelmatch",
+    "threejs",
+    "nextjs"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "pixel-clone-mcp": "scripts/mcp-launch.mjs"
+  },
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "LICENSE",
+    ".claude-plugin",
+    "gemini-extension.json",
+    "mcp-server/src",
+    "mcp-server/dist",
+    "scripts",
+    "templates",
+    "tsconfig.json"
+  ],
+  "engines": {
+    "node": ">=20.9"
+  },
+  "scripts": {
+    "setup": "npm install --no-audit --no-fund && npm run build && npx playwright install chromium",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node scripts/mcp-launch.mjs",
+    "postinstall": "node scripts/postinstall.mjs",
+    "test:e2e": "node scripts/e2e.mjs",
+    "test": "node --test test/",
+    "scaffold": "node scripts/scaffold.mjs",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "pixelmatch": "^8.0.0",
+    "playwright": "^1.65.1",
+    "pngjs": "^7.0.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@types/pngjs": "^6.0.5",
+    "typescript": "^5.9.3"
+  }
+}

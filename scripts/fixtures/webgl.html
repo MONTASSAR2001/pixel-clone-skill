@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>WebGL fixture</title>
+<style>html,body{margin:0;background:#0b0d12}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+</head><body>
+<script type="module">
+import * as THREE from 'three';
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(1);
+renderer.setSize(innerWidth, innerHeight);
+renderer.setClearColor(0x0b0d12, 1);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0x0b0d12, 5, 20);
+const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 100);
+camera.position.set(2, 1.5, 5); camera.lookAt(0, 0, 0);
+const key = new THREE.DirectionalLight(0xffffff, 2.5); key.position.set(3, 4, 2); scene.add(key);
+scene.add(new THREE.AmbientLight(0x404060, 0.6));
+const box = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial({ color: 0xff5a1f, roughness: 0.35, metalness: 0.2 }));
+box.name = 'hero-box'; scene.add(box);
+const sh = new THREE.Mesh(new THREE.SphereGeometry(0.6, 32, 16), new THREE.ShaderMaterial({
+  uniforms: { uTime: { value: 0 }, uTint: { value: new THREE.Color(0x4aa3ff) } },
+  vertexShader: 'varying vec3 vN; void main(){ vN = normal; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
+  fragmentShader: 'uniform float uTime; uniform vec3 uTint; varying vec3 vN; void main(){ gl_FragColor = vec4(uTint * (0.5 + 0.5*vN.y), 1.0); }',
+}));
+sh.position.set(-2, 0, 0); sh.name = 'shader-sphere'; scene.add(sh);
+renderer.setAnimationLoop((t) => { box.rotation.y = t / 1000; sh.material.uniforms.uTime.value = t / 1000; renderer.render(scene, camera); });
+</script></body></html>

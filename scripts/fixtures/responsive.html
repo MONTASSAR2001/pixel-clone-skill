@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Responsive fixture</title>
+<style>
+  html, body { margin: 0; padding: 0; font-family: Georgia, serif; }
+  body { background: #f4f1ea; }
+  .bar { position: fixed; top: 0; left: 0; right: 0; height: 56px; background: #111; z-index: 5; }
+  .hud { position: fixed; top: 21px; right: 21px; width: 120px; height: 40px; background: #ff5a1f; border-radius: 10px 10px 0 10px; z-index: 6; color: #fff; font: 600 14px/40px monospace; text-align: center; }
+  .dock { position: fixed; left: 50%; bottom: 24px; width: 200px; margin-left: -100px; height: 30px; background: #2b6cb0; z-index: 6; }
+  .col { max-width: 960px; margin: 0 auto; padding: 120px 24px 0; }
+  .title { font-size: 4vw; margin: 0; transform: rotate(-8deg); transform-origin: 0 50%; color: #222; }
+  .card { position: relative; margin-top: 60px; width: 420px; height: 160px; background: #fff; transform: rotate(6deg); }
+  .card .tag { position: absolute; left: 30px; top: 40px; width: 160px; height: 36px; background: #0a7; transform: skewX(-12deg); color: #fff; font: 14px/36px sans-serif; text-align: center; }
+  .rule { position: relative; height: 40px; margin-top: 50px; }
+  .rule::after { content: ""; position: absolute; left: 0; right: 0; top: 19px; height: 2px; background: #c33; }
+  .icon { width: 48px; height: 48px; margin-top: 30px; }
+  .icon .stroke { fill: none; stroke: #7b2cbf; stroke-width: 4; }
+  .tall { height: 1600px; }
+  .burger { display: none; position: fixed; top: 12px; left: 12px; width: 40px; height: 32px; z-index: 7; background: #fff; border: 0; }
+  .row { display: flex; gap: 10px; margin-top: 30px; }
+  .row > div { width: 100px; height: 40px; background: #ccc; }
+  @media (max-width: 600px) {
+    .dock { display: none; }
+    .burger { display: block; }
+    .row { flex-direction: column; }
+    .title { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute"><symbol id="sym-dot" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="#e0a800"/></symbol></svg>
+  <div class="bar"></div>
+  <div class="hud">SIGN IN</div>
+  <button class="burger" aria-label="Open menu" aria-expanded="false"></button>
+  <div class="dock"></div>
+  <main class="col">
+    <h1 class="title">Angled headline</h1>
+    <div class="card"><div class="tag">Skewed tag</div></div>
+    <div class="rule"></div>
+    <svg class="icon" viewBox="0 0 48 48"><rect class="stroke" x="4" y="4" width="40" height="40"/><use href="#sym-dot" x="14" y="14" width="20" height="20"/></svg>
+    <div class="row"><div></div><div></div><div></div></div>
+    <div class="tall"></div>
+  </main>
+</body>
+</html>

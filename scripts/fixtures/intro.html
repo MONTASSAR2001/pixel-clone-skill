@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Intro-once fixture</title>
+<style>
+  html, body { margin: 0; font-family: Georgia, serif; }
+  .hero { height: 900px; display: flex; align-items: center; justify-content: center; background: #1d2b53; color: #fff; font-size: 64px; }
+  body.visited .hero { background: #f2e8cf; color: #222; }
+  .rest { height: 2400px; background: linear-gradient(#fff, #ddd); }
+</style>
+</head>
+<body>
+  <div class="hero"><span class="label">Welcome</span></div>
+  <div class="rest"></div>
+  <script>
+    // The intro plays once: after a deep scroll the top of the page shows the post-intro header.
+    addEventListener("scroll", () => { if (scrollY > 1.5 * innerHeight && !document.body.classList.contains("visited")) { document.body.classList.add("visited"); document.querySelector(".label").textContent = "Welcome back"; } }, { passive: true });
+  </script>
+</body>
+</html>

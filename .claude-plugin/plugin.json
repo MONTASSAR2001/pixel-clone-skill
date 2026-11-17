@@ -1,0 +1,13 @@
+{
+  "name": "pixel-clone",
+  "version": "0.1.0",
+  "description": "Reverse-engineer a website you own or may replicate into a measured Next.js + Tailwind clone (GSAP / Framer Motion / React Three Fiber only when the target uses them), verified by a full-page, multi-viewport pixelmatch loop. Bundles the pixel-clone skill (SKILL.md) and its MCP server (Playwright + CDP).",
+  "license": "MIT",
+  "keywords": ["agent-skill", "mcp", "website-clone", "playwright", "pixelmatch", "nextjs", "tailwind", "threejs", "webgl"],
+  "mcpServers": {
+    "pixel-clone": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/mcp-launch.mjs"]
+    }
+  }
+}

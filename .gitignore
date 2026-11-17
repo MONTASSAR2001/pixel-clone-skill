@@ -1,0 +1,27 @@
+# Dependencies and build output (rebuilt by `npm run setup` or on first MCP start)
+node_modules/
+mcp-server/dist/
+*.tsbuildinfo
+.next/
+.next-*/
+out/
+
+# Clone outputs, captures, caches, demo runs: never commit target content
+.clone-output/
+docs/demo/
+
+# Local agent / editor / OS state
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets, logs, scratch
+.env
+.env.*
+*.log
+npm-debug.log*
+coverage/
+tmp/
+*.tmp

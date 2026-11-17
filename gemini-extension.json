@@ -1,0 +1,13 @@
+{
+  "name": "pixel-clone-skill",
+  "version": "0.1.0",
+  "description": "pixel-clone: reverse-engineer a website you own or may replicate into a measured Next.js + Tailwind clone, verified by a pixelmatch loop (skill + MCP server).",
+  "contextFileName": "SKILL.md",
+  "mcpServers": {
+    "pixel-clone": {
+      "command": "node",
+      "args": ["${extensionPath}${/}scripts${/}mcp-launch.mjs"],
+      "cwd": "${extensionPath}"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "pixel-clone-skill",
+  "description": "pixel-clone: measured website reverse-engineering (Agent Skill + MCP server).",
+  "owner": { "name": "pixel-clone-skill contributors" },
+  "plugins": [
+    {
+      "name": "pixel-clone",
+      "source": "./",
+      "description": "Agent Skill + MCP server: profile, extract, scaffold and pixel-verify a Next.js + Tailwind clone of a site you own or may replicate.",
+      "version": "0.1.0"
+    }
+  ]
+}
