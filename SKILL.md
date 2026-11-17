@@ -2,6 +2,9 @@
 name: pixel-clone
 description: Reverse-engineer a website you own or have permission to replicate (static pages, SaaS/e-commerce sites, dashboards, smooth-scroll/GSAP sites, WebGL/Three.js experiences) into a clean Next.js (App Router) + Tailwind CSS project, adding GSAP / Framer Motion / Lenis / React Three Fiber ONLY if the target uses them. Profiles the site, clears cookie banners/age gates/preloaders/"Enter" screens, extracts a design blueprint (with per-element responsive rules measured at 1440x900 and 1920x1080), motion timeline and WebGL scene via Playwright + CDP, then iterates against a full-page, multi-viewport pixelmatch diff until every slice is >= 99% or a documented plateau. Clones are responsive (full-bleed at any window size), open on the target's hero, load progressively and scroll smoothly. Use when asked to clone, replicate, recreate, reverse-engineer or make a pixel-perfect copy of a site, landing page, scroll animation, HUD or 3D scene from a URL.
 license: MIT
+metadata:
+  author: Montassar Zarai
+  version: "0.1.0"
 compatibility: Requires Node >= 20.9 and the pixel-clone MCP server (this repo; start it with node scripts/mcp-launch.mjs after npm run setup). Works with any Agent Skills + MCP client, e.g. Claude Code, Cursor, Windsurf, Antigravity, Gemini CLI.
 ---
 

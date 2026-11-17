@@ -1,13 +1,18 @@
 {
-  "name": "pixel-clone-skill",
+  "name": "pixel-clone",
   "description": "pixel-clone: measured website reverse-engineering (Agent Skill + MCP server).",
-  "owner": { "name": "pixel-clone-skill contributors" },
+  "owner": {
+    "name": "Montassar Zarai"
+  },
   "plugins": [
     {
       "name": "pixel-clone",
       "source": "./",
       "description": "Agent Skill + MCP server: profile, extract, scaffold and pixel-verify a Next.js + Tailwind clone of a site you own or may replicate.",
-      "version": "0.1.0"
+      "version": "0.1.0",
+      "author": {
+        "name": "Montassar Zarai"
+      }
     }
   ]
 }

@@ -1,7 +1,9 @@
 {
-  "name": "pixel-clone-skill",
+  "name": "pixel-clone",
   "version": "0.1.0",
-  "description": "Agent Skill + MCP server that reverse-engineers a website's UI, motion and Three.js/WebGL scenes into Next.js + Tailwind + GSAP/Framer Motion + React Three Fiber, verified by a pixelmatch diff loop.",
+  "description": "Telemetry-driven, pixel-accurate website reverse-engineering for AI coding agents: an Agent Skill + MCP server that profiles a site with Playwright + CDP, writes a measured Next.js + Tailwind clone (WebGL replay only for bespoke canvas pipelines) and verifies it with a full-page, multi-viewport pixelmatch loop.",
+  "author": "Montassar Zarai",
+  "license": "MIT",
   "keywords": [
     "agent-skill",
     "mcp",
@@ -13,7 +15,6 @@
     "threejs",
     "nextjs"
   ],
-  "license": "MIT",
   "type": "module",
   "bin": {
     "pixel-clone-mcp": "scripts/mcp-launch.mjs"
@@ -22,6 +23,7 @@
     "SKILL.md",
     "README.md",
     "LICENSE",
+    "assets",
     ".claude-plugin",
     "gemini-extension.json",
     "mcp-server/src",
