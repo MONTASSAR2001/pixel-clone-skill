@@ -77,10 +77,10 @@ Measured on this repository's own runtime and test suite (local production build
 
 ## Install
 
-Requires **Node ≥ 20.9** and git. Replace `<owner>` with the GitHub account that hosts this repository.
+Requires **Node ≥ 20.9** and git. Replace `MONTASSAR2001` with the GitHub account that hosts this repository.
 
 ```bash
-npx skills add <owner>/pixel-clone        # the skill, for every agent `skills` supports
+npx skills add MONTASSAR2001/pixel-clone-skill        # the skill, for every agent `skills` supports
 cd <path-to>/pixel-clone && npm run setup  # deps + build + Playwright Chromium, one command
 ```
 
@@ -90,8 +90,8 @@ Every client starts the server with `node scripts/mcp-launch.mjs`. On a fresh in
 <summary><b>Claude Code</b>: plugin with the skill and the MCP server in one step</summary>
 
 ```bash
-claude plugin marketplace add <owner>/pixel-clone
-claude plugin install pixel-clone@pixel-clone
+claude plugin marketplace add MONTASSAR2001/pixel-clone-skill
+claude plugin install pixel-clone@pixel-clone-skill
 ```
 
 Or manually, after `npx skills add`:
@@ -154,7 +154,7 @@ Windsurf's current documentation lives under Devin Local: `~/.config/devin/mcp_c
 <summary><b>Gemini CLI</b>: extension, or <code>~/.gemini/settings.json</code></summary>
 
 ```bash
-gemini extensions install https://github.com/<owner>/pixel-clone
+gemini extensions install https://github.com/MONTASSAR2001/pixel-clone-skill
 ```
 
 `gemini-extension.json` loads `SKILL.md` as context and starts the server from the extension directory. Or register the server in `~/.gemini/settings.json` (all projects) or `.gemini/settings.json` (one project) with the same `mcpServers` block as above. Gemini CLI's own docs mark it as superseded by the Antigravity CLI.
